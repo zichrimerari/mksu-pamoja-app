@@ -1,0 +1,101 @@
+# MKSU Mobile App Development Plan
+
+## Notes
+- The app will centralize mental health resources for students.
+- Key features include counseling access, self-help resources, SMS engagement, support tools, and ICT collaboration.
+- Security, confidentiality, and user-friendliness are priorities.
+- The app is for Machakos University (MKSU), not KUOCAS.
+- The app should be an Android app, developed in a new appropriately named folder (not KUOCAS).
+- The Android project structure for MKSUpamoja has been created.
+- Initial core files and UI screens (app class, main activity, navigation, login, home, theme) have been created.
+- App theme updated to use Machakos University's brand colors.
+- All project dependencies and build configuration have been set up.
+- Fixed Jetpack Compose theming and import issues in Theme.kt
+- Ensured Typography and Color definitions are properly imported and used
+- Updated Compose compiler version in Gradle config to match libs.versions.toml
+- Fixed Gradle build dependency and plugin issues, including plugin aliases and KSP
+- Corrected Firebase BOM usage to avoid version conflicts
+- Resolved Navigation Safe Args plugin conflict by applying legacy plugin method
+- All Gradle, dependency, and theming errors resolved; project builds successfully
+- Project structure, navigation, and screen definitions reviewed; ready to expand core features
+- Data models, DAOs, Room database, and type converters created for core entities (User, Counselor, Appointment, Resource, Chat)
+- Repository layer implemented for all core entities (User, Counselor, Appointment, Resource, Chat)
+- Hilt dependency injection modules for database, Firebase, and network created
+- ViewModels for authentication and home screens implemented
+- ViewModel for counselor directory implemented
+- Login and Home screens upgraded for modern, data-driven UI and UX
+- Fixed missing material-icons-extended dependency error by defining it in the version catalog and using the correct alias in build.gradle.kts
+- Fixed Gradle alias error by correctly defining the alias for the material-icons-extended dependency
+- Identified missing import for Row composable in Login screen (line 139)
+- IDE warning: targetSdk = 36 may not be stable/supported; review SDK version
+- Lint error: MainActivity is referenced in AndroidManifest.xml but missing from project; update manifest to fix build
+- App builds and installs successfully; ensure emulator/device is running before install
+- App install succeeds, but launching MainActivity fails: "Activity class ... does not exist"; check manifest, package, and class name for MainActivity
+- New build error: Multiple @HiltAndroidApp roots detected (MKSUpamojaApp, PamojaApp); must remove duplicate and ensure only one application class is annotated for Hilt
+- Duplicate MKSUpamojaApp.kt deleted, but now unresolved reference to MKSUPamojaApp in MainActivity.kt; update code to reference correct application class
+- Duplicate/incorrect MainActivity.kt in ui folder deleted; project ready for final build and launch
+- Build still fails: Multiple @HiltAndroidApp roots detected (MKSUpamojaApp, PamojaApp); ensure ALL duplicate application classes are deleted and only one remains
+- All duplicate @HiltAndroidApp application classes removed; only PamojaApp.kt remains
+- Manifest updated to use full class name for MainActivity; ready for launch
+- App crashes on startup due to missing/invalid Firebase API key; must fix Firebase configuration before app will launch
+- Firebase configuration file replaced with valid one; ready to test app launch
+- Debug build variant (com.mksu.pamoja.debug) not registered in Firebase; must add debug package to Firebase project and update google-services.json
+- Temporarily removed debug applicationIdSuffix in build config to use base package name for Firebase compatibility
+- Build now fails at :app:mergeDebugResources due to missing resource files (e.g., values-es-rUS.xml, values-hi.xml, values-pt.xml, values-watch-v21.xml); must resolve resource compilation errors before further testing
+- Resource compilation errors resolved; build is now successful
+- App installed successfully after build; ready to verify app launch and runtime
+- App launch and runtime verified; app is running on emulator/device
+- Next major focus: Counseling features (directory, booking, scheduling, calendar integration)
+- Counseling infrastructure (model, DAO, repository, ViewModel) already present; next step: appointment booking system
+- Fixed navigation to always start at Login screen (Screen.Login.route)
+- Fixed HomeScreen crash when not logged in; now shows a message prompting user to log in
+- Cleaned up duplicate code and formatting in MainActivity and HomeScreen
+- User has requested to move focus to authentication system; next steps will analyze and improve authentication
+- Signup creates Firebase credentials, but app crashes after sign-in instead of redirecting to Home; likely issue in HomeViewModel or user data loading after authentication. Next step: debug and fix authentication-to-home flow.
+- Added error handling and logic fixes to AuthViewModel and HomeViewModel to address post-login crash, but app is still crashing after login. Next: further debug authentication-to-home flow and investigate data layer/DI issues.
+- User intends to save project (including plan.md) to GitHub and pause development while seeking more computing power for compilation.
+
+## Task List
+- [x] Set up Android project structure
+- [x] Create initial core files and UI screens
+- [x] Set up project dependencies
+- [x] Fix build, dependency, and theming errors
+- [x] Review project structure and navigation
+- [x] Implement core data models and local data persistence
+- [x] Implement repository layer and dependency injection
+- [x] Implement ViewModels for authentication and home
+- [x] Implement ViewModel for counselor directory
+- [x] Upgrade Login and Home screens to use ViewModels and modern UI
+- [x] Fix manifest to remove or update MainActivity reference
+- [x] Remove all duplicate @HiltAndroidApp application classes (only one allowed)
+- [x] Fix unresolved reference to deleted application class (update MainActivity.kt and any other references to use PamojaApp)
+- [x] Fix Firebase configuration/API key crash so app can launch
+- [x] Fix resource compilation errors (missing resource files) so build can proceed
+- [x] Install and launch app after successful build
+- [x] Verify app launches and runs as expected
+- [ ] Analyze and document detailed requirements for authentication features
+- [ ] Review and improve authentication UI and flow
+- [ ] Test authentication (login, registration, error handling)
+- [ ] Debug and fix crash after sign-in (ensure app navigates to Home and loads user data correctly)
+- [ ] Further debug authentication-to-home flow and investigate data layer/DI issues
+- [ ] Save entire project (including plan.md) to GitHub for backup and migration
+- [ ] Analyze and document detailed requirements for counseling features
+- [ ] Design counseling user flows and UI wireframes
+- [ ] Implement counselor directory UI and data integration
+- [ ] Build appointment booking system (UI, ViewModel, backend)
+  - [ ] Design and implement appointment data model and DAO
+  - [ ] Create appointment repository and ViewModel
+  - [ ] Build Compose UI for booking appointments
+  - [ ] Integrate with counselor availability and calendar
+- [ ] Add counselor availability management
+- [ ] Integrate appointment scheduling/calendar
+- [ ] Test counseling features end-to-end
+- [ ] Analyze and document detailed requirements for each remaining major app function
+- [ ] Design app architecture and user flows for remaining features
+- [ ] Develop remaining features (resource library, chat, SMS, feedback, forum, etc.)
+- [ ] Collaborate with ICT for security, integration, and maintenance
+- [ ] Test, iterate, and prepare for deployment
+- [ ] Register debug build package (com.mksu.pamoja.debug) in Firebase and update google-services.json (skipped for now, using workaround)
+
+## Current Goal
+Save project to GitHub and pause for migration

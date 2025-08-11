@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "580996739307",
+    "project_id": "mksupamoja",
+    "storage_bucket": "mksupamoja.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580996739307:android:7f5948a64ffb0d2b514eae",
+        "android_client_info": {
+          "package_name": "com.mksu.pamoja"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRF1WsTGRae5wM0jt_ld6dcUPvVz6-pig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
